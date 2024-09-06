@@ -1,0 +1,32 @@
+import logging
+import os
+
+# Ensure the logs directory exists
+os.makedirs('logs', exist_ok=True)
+
+# Configure the logging
+logging.basicConfig(
+    filename='logs/student_data.log',
+    level=logging.DEBUG,  # Or any level you need
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Example log message
+logging.info('This is a log message.')
+
+# Save as CSV
+df.to_csv('data/output.csv', index=False)
+
+# Save as TSV
+df.to_csv('data/output.tsv', sep='\t', index=False)
+
+# Save as JSON
+df.to_json('data/output.json', orient='records', lines=True)
+
+# Save as JSONL
+df.to_json('data/output.jsonl', orient='records', lines=True)INFO:root:Number of male students: 40
+INFO:root:Number of female students: 24
+INFO:root:Number of male students: 40
+INFO:root:Number of female students: 24
+INFO:root:Number of male students: 40
+INFO:root:Number of female students: 24
