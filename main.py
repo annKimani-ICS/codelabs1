@@ -3,7 +3,7 @@ import logging
 from functions import generate_unique_email, filter_gender
 from constraints import OUTPUT_CSV, OUTPUT_TSV, LOG_FILE
 
-# Configure logging
+# Configure logging(Tracking events that happen when the program runs)
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 # Load the student data
