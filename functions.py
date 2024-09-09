@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 # Function to generate email addresses based on student names
 def generate_email(name):
@@ -29,6 +30,9 @@ def generate_unique_email(name, existing_emails):
     existing_emails.add(unique_email)
     return unique_email
 
-# Function to filter male and female students
-def filter_gender(data, gender):
-    return data[data['Gender'] == gender]
+# Function to sort by gender: females first, then males
+def filter_and_sort_by_gender(data):
+    females = data[data['Gender'] == 'F']
+    males = data[data['Gender'] == 'M']
+    # Concatenate females first, then males
+    return pd.concat([females, males], ignore_index=True)
