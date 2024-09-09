@@ -25,5 +25,7 @@ logging.info(f"Number of male students: {len(sorted_students[sorted_students['Ge
 sorted_students.to_csv(OUTPUT_CSV, index=False)
 sorted_students.to_csv(OUTPUT_TSV, sep='\t', index=False)
 
+# Print success message for verification
+print(f"Data processing complete. Files saved as '{OUTPUT_CSV}' and '{OUTPUT_TSV}'")
 
 # Additional code for shuffling and saving as JSON, JSONL...
