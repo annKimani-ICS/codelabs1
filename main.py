@@ -8,14 +8,19 @@ from constraints import OUTPUT_CSV, OUTPUT_TSV, LOG_FILE
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 # Load the student data
-student_data = pd.read_excel('data/Test Files.xlsx')
+student_data_A = pd.read_excel('data/Test Files.xlsx', sheet_name= 'File_A')
+student_data_B = pd.read_excel('data/Test Files.xlsx', sheet_name= 'File_B')
 
 # Generate unique emails for all students
 existing_emails = set()
-student_data['Email Address'] = student_data['Student Name'].apply(lambda name: generate_unique_email(name, existing_emails))
+student_data_A['Email Address'] = student_data_A['Student Name'].apply(lambda name: generate_unique_email(name, existing_emails))
+student_data_B['Email Address'] = student_data_B['Student Name'].apply(lambda name: generate_unique_email(name, existing_emails))
 
-# Sort students: females first, then males
-sorted_students = filter_and_sort_by_gender(student_data)
+# Combine the two DataFrames
+combined_data = pd.concat([student_data_A, student_data_B])
+
+# Apply the sorting function
+sorted_students = filter_and_sort_by_gender(combined_data)
 
 # Log the total number of students and by gender
 logging.info(f"Total number of students: {len(sorted_students)}")
